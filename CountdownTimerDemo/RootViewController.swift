@@ -10,7 +10,7 @@ import TimerControl
 
 class RootViewController: UIViewController {
 
-    var timerControlView: TimerControlView!
+    var countdownTimer: SRCountdownTimer!
     var toggleBtn: UIButton!
 
     var isTimerRunning = false
@@ -21,13 +21,27 @@ class RootViewController: UIViewController {
         configUI()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        countdownTimer.start(beginingValue: 30)
+        countdownTimer.pause()
+    }
+
     func configUI() {
 
-        timerControlView = TimerControlView()
-        timerControlView.delegate = self
-        timerControlView.configureTimerControl(innerColor: .black, outerColor: .white, counterTextColor: .white, hideInactiveCounter: false, arcWidth: 2, arcDashPattern: .none)
-        timerControlView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(timerControlView)
+        countdownTimer = SRCountdownTimer()
+        countdownTimer.layer.borderColor = UIColor.systemRed.cgColor
+        countdownTimer.layer.borderWidth = 1.0
+        countdownTimer.delegate = self
+        countdownTimer.moveClockWise = false
+        countdownTimer.trailLineColor = .systemGreen
+        countdownTimer.isLabelHidden = false
+        countdownTimer.lineWidth = 5.0
+        countdownTimer.useMinutesAndSecondsRepresentation = false
+        countdownTimer.labelTextColor = .systemGreen
+        countdownTimer.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(countdownTimer)
 
         toggleBtn = UIButton()
         toggleBtn.layer.cornerRadius = 50
@@ -38,15 +52,15 @@ class RootViewController: UIViewController {
         self.view.addSubview(toggleBtn)
 
         NSLayoutConstraint.activate([
-            timerControlView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            timerControlView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            timerControlView.heightAnchor.constraint(equalToConstant: 240),
-            timerControlView.widthAnchor.constraint(equalToConstant: 240),
+            countdownTimer.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            countdownTimer.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            countdownTimer.heightAnchor.constraint(equalToConstant: 240),
+            countdownTimer.widthAnchor.constraint(equalToConstant: 240),
 
             toggleBtn.widthAnchor.constraint(equalToConstant: 100),
             toggleBtn.heightAnchor.constraint(equalToConstant: 100),
             toggleBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            toggleBtn.topAnchor.constraint(equalTo: timerControlView.bottomAnchor, constant: 50)
+            toggleBtn.topAnchor.constraint(equalTo: countdownTimer.bottomAnchor, constant: 50)
         ])
 
         toggleBtn.addTarget(self, action: #selector(didTapToggleBtn), for: .touchDown)
@@ -56,11 +70,11 @@ class RootViewController: UIViewController {
     func didTapToggleBtn() {
 
         if(isTimerRunning) {
-            timerControlView.stopTimer()
+            countdownTimer.pause()
             toggleBtn.setTitle("Start", for: .normal)
             toggleBtn.backgroundColor = .systemGreen
         } else {
-            timerControlView.startTimer(duration: 30)
+            countdownTimer.resume()
             toggleBtn.setTitle("Stop", for: .normal)
             toggleBtn.backgroundColor = .systemRed
         }
@@ -69,15 +83,11 @@ class RootViewController: UIViewController {
     }
 }
 
-extension RootViewController: TimerControlDelegate {
+extension RootViewController: SRCountdownTimerDelegate {
 
-    func timerCompleted() {
-
-        print("Timer Completed")
-    }
-    
-    func timerTicked() {
-
-        print("Timer Ticked")
+    func timerDidEnd(sender: SRCountdownTimer, elapsedTime: TimeInterval) {
+        
+        print("Elapsed Time -> \(elapsedTime)")
+        sender.start(beginingValue: 30)
     }
 }

@@ -13,6 +13,7 @@
 		60954E892AE137D1000ED23A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60954E872AE137D1000ED23A /* LaunchScreen.storyboard */; };
 		60954E912AE138C0000ED23A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60954E902AE138C0000ED23A /* RootViewController.swift */; };
 		60954E942AE13910000ED23A /* TimerControl in Frameworks */ = {isa = PBXBuildFile; productRef = 60954E932AE13910000ED23A /* TimerControl */; };
+		60A32B242AE15CF700C96808 /* SRCountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A32B232AE15CF700C96808 /* SRCountdownTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		60954E882AE137D1000ED23A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60954E8A2AE137D1000ED23A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60954E902AE138C0000ED23A /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		60A32B232AE15CF700C96808 /* SRCountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRCountdownTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				60954E852AE137D1000ED23A /* Assets.xcassets */,
 				60954E872AE137D1000ED23A /* LaunchScreen.storyboard */,
 				60954E8A2AE137D1000ED23A /* Info.plist */,
+				60A32B232AE15CF700C96808 /* SRCountdownTimer.swift */,
 			);
 			path = CountdownTimerDemo;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60A32B242AE15CF700C96808 /* SRCountdownTimer.swift in Sources */,
 				60954E7D2AE137CF000ED23A /* AppDelegate.swift in Sources */,
 				60954E7F2AE137CF000ED23A /* SceneDelegate.swift in Sources */,
 				60954E912AE138C0000ED23A /* RootViewController.swift in Sources */,
