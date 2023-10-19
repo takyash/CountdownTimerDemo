@@ -90,4 +90,15 @@ extension RootViewController: SRCountdownTimerDelegate {
         print("Elapsed Time -> \(elapsedTime)")
         sender.start(beginingValue: 30)
     }
+
+    func timerDidUpdateCounterValue(sender: SRCountdownTimer, newValue: Int) {
+
+        print("SRCountdownTimerDelegate -> timerDidUpdateCounterValue")
+        print("newValue -> \(newValue)")
+        if(newValue <= 5) {
+            sender.trailLineColor = .systemRed
+        } else {
+            sender.trailLineColor = .systemGreen
+        }
+    }
 }
