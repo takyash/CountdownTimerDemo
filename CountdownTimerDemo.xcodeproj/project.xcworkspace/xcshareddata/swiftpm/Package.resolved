@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "timercontrol",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Zendos1/TimerControl",
+      "state" : {
+        "revision" : "4aa68d4f162d31e4ac732bc3671af21f96a731de",
+        "version" : "1.0.7"
+      }
+    }
+  ],
+  "version" : 2
+}
